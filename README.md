@@ -31,7 +31,7 @@ let data = [{
 xlsx.writeFile({
   SheetNames: ['Sheet1'],
   Sheets: {
-    Sheet1: json2xlsx(data)
+    Sheet1: json2xlsx-ws(data)
   }
 }, 'workbook.xlsx')
 ```
