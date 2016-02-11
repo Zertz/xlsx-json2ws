@@ -10,7 +10,7 @@ npm i xlsx --save
 ## Usage
 
 ```js
-const json2xlsx-ws = require('json2xlsx-ws')
+const json2xlsx = require('json2xlsx-ws')
 const xslx = require('xlsx')
 
 // First object in the data array represents headers
@@ -29,9 +29,10 @@ let data = [{
 }]
 
 xlsx.writeFile({
-  SheetNames: ['Sheet1'],
+  SheetNames: ['Sheet1', 'Sheet2'],
   Sheets: {
-    Sheet1: json2xlsx-ws(data)
+    Sheet1: json2xlsx(data),
+    Sheet2: json2xlsx(data)
   }
 }, 'workbook.xlsx')
 ```
