@@ -1,6 +1,6 @@
 {
   "name": "json2xlsx-ws",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert JSON objects to a xlsx worksheet",
   "main": "dist/index.js",
   "module": "dist/xlsx-json2ws.esm.js",
