@@ -10,6 +10,10 @@ function datenum(v: Date) {
 export function json2xlsx(
   data: Record<string, boolean | number | string | Date | null>[],
 ) {
+  if (data.length === 0) {
+    return;
+  }
+
   const worksheet: xlsx.WorkSheet = {};
 
   const header = Object.keys(data[0]);
