@@ -8,7 +8,7 @@ function datenum(v: Date) {
 }
 
 export function json2xlsx(
-  data: Record<string, boolean | number | string | Date | null>[]
+  data: Record<string, boolean | number | string | Date | null>[],
 ) {
   if (data.length === 0) {
     return;
