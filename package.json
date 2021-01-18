@@ -2,26 +2,31 @@
   "name": "json2xlsx-ws",
   "version": "0.1.1",
   "description": "Convert JSON objects to a xlsx worksheet",
-  "main": "./lib/index.js",
-  "directories": {
-    "test": "test"
+  "main": "dist/index.js",
+  "module": "dist/xlsx-json2ws.esm.js",
+  "typings": "dist/index.d.ts",
+  "engines": {
+    "node": ">=10"
   },
   "scripts": {
-    "lint": "standard",
-    "compile": "babel src -d lib",
-    "prepublish": "npm test",
-    "pretest": "npm run lint && npm run compile",
-    "test": "mocha --compilers js:babel-core/register -R spec ./test"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
   },
-  "peerDependencies": {
-    "xlsx": "^0.8.0"
+  "dependencies": {
+    "xlsx": "^0.16.9"
   },
   "devDependencies": {
-    "babel-cli": "^6.4.0",
-    "babel-core": "^6.4.0",
-    "babel-preset-es2015": "^6.3.0",
-    "mocha": "^2.3.0",
-    "standard": "^6.0.0"
+    "@size-limit/preset-small-lib": "^4.9.1",
+    "husky": "^4.3.8",
+    "size-limit": "^4.9.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0",
+    "typescript": "^4.1.3"
   },
   "repository": {
     "type": "git",
@@ -42,16 +47,22 @@
   "homepage": "https://github.com/Zertz/xlsx-json2ws#readme",
   "files": [
     "LICENSE",
-    "README.md",
-    "lib/"
+    "dist",
+    "src"
   ],
-  "standard": {
-    "ignore": [
-      "lib"
-    ],
-    "globals": [
-      "describe",
-      "it"
-    ]
-  }
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "size-limit": [
+    {
+      "path": "dist/xlsx-json2ws.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/xlsx-json2ws.esm.js",
+      "limit": "10 KB"
+    }
+  ]
 }
